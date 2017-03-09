@@ -12,4 +12,7 @@ export class MainPage {
   logout() {
     this.navCtrl.pop();
   }
+  userID() : string {
+    return KiiUser.getCurrentUser().getID()
+  }
 }
