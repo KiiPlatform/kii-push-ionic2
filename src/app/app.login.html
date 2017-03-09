@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Login to Kii</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" [(ngModel)]="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <div padding>
+      <button (click)="login()" ion-button color="primary" block>Login</button>
+
+    </div>
+
+</ion-content>
