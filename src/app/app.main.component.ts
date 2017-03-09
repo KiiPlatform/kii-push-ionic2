@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { MainPage } from './app.main.component';
+import { LoginPage } from './app.login.component';
 import { NavController } from 'ionic-angular';
 
 @Component({
-  templateUrl: 'app.login.html'
+  templateUrl: 'app.main.html'
 })
 
-export class LoginPage {
+export class MainPage {
   constructor(public navCtrl: NavController) {
   }
-  login() {
-    this.navCtrl.push(MainPage);
+  logout() {
+    this.navCtrl.pop();
   }
 }

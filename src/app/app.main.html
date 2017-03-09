@@ -1,0 +1,16 @@
+<ion-nav [root]="rootPage"></ion-nav>
+<ion-header>
+  <ion-navbar>
+    <ion-title>Welcome to Kii!</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <div padding>Your user ID is {{userID}}</div>
+    <div padding>
+      <button (click)="logout()" ion-button color="primary" block>Logout</button>
+
+    </div>
+
+</ion-content>
