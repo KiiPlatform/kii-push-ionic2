@@ -17,6 +17,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+      Kii.initializeWithSite("Your app ID", "Your app key", KiiSite.JP);
+      let kiiUser: KiiUser;
     });
   }
 }
