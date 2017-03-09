@@ -7,7 +7,7 @@ import { NavController } from 'ionic-angular';
 })
 
 export class MainPage {
-  constructor(public navCtrl: NavController) {
+  constructor(private navCtrl: NavController) {
   }
   logout() {
     this.navCtrl.pop();
