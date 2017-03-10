@@ -30,6 +30,7 @@
   "devDependencies": {
     "@ionic/app-scripts": "1.1.4",
     "@types/kii-cloud-sdk": "^2.4.32",
+    "@types/phonegap-plugin-push": "0.0.31",
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
