@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 import * as popsicle from 'popsicle'
 
 @Component({
@@ -7,7 +8,8 @@ import * as popsicle from 'popsicle'
 })
 
 export class MainPage {
-  constructor(private navCtrl: NavController) {
+  constructor(private navCtrl: NavController,
+              private alertCtrl: AlertController) {
       this.installPush()
   }
   logout() {
@@ -58,14 +60,35 @@ export class MainPage {
               }
           }).use(popsicle.plugins.parse('json'))
           .then((res) => {
-              console.log(res)
+              console.log(res);
+              let message = 'installationID: ' + res['body']['installationID']
+              message += '\n'
+              message += 'deviceToken: ' + data.registrationId
+
+              let alert = this.alertCtrl.create({
+                  title: 'Installed push',
+                  message: message,
+                  buttons: ['OK']
+              });
+              alert.present();
           })
           .catch((error:Error) => {
-              console.log(error)
+              let alert = this.alertCtrl.create({
+                  title: 'Failed to Install push',
+                  message: error.message,
+                  buttons: ['OK']
+              });
+              alert.present();
           })
       });
 
       push.on('notification', (data) => {
+          let alert = this.alertCtrl.create({
+              title: data.title,
+              message: data.message,
+              buttons: ['OK']
+          });
+          alert.present();
           console.log(data.message);
           console.log(data.title);
           console.log(data.count);
