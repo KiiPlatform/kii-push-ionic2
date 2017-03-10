@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "typeRoots" : ["./typings"],
+    "types" : ["kii-cloud-sdk","cordova-plugin-device","phonegap-plugin-push"],
     "allowSyntheticDefaultImports": true,
     "declaration": false,
     "emitDecoratorMetadata": true,

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { LoginPage } from './app.login.component';
 import { NavController } from 'ionic-angular';
+import * as popsicle from 'popsicle'
 
 @Component({
   templateUrl: 'app.main.html'
@@ -17,6 +17,15 @@ export class MainPage {
   userID() : string {
     return KiiUser.getCurrentUser().getID()
   }
+  token() : string {
+      return KiiUser.getCurrentUser().getAccessToken()
+  }
+  appID() : string {
+      return Kii.getAppID()
+  }
+  appKey() : string {
+      return Kii.getAppKey()
+  }
 
   installPush() {
       let push = PushNotification.init({
@@ -31,7 +40,29 @@ export class MainPage {
       });
 
       push.on('registration', (data) => {
-          console.log(data.registrationId);
+          console.log(data.registrationId)
+          let platform = device.platform.toUpperCase()
+          popsicle.request({
+              method: 'POST',
+              url: 'https://api-jp.kii.com/api/apps/' + this.appID() + '/installations',
+              body: {
+                  installationRegistrationID: data.registrationId,
+                  deviceType: platform,
+                  development: true
+              },
+              headers: {
+                  'Content-Type' : 'application/vnd.kii.InstallationCreationRequest+json',
+                  'Authorization' : 'Bearer ' + this.token(),
+                  'X-Kii-AppID' : '' + this.appID(),
+                  'X-Kii-AppKey' : '' + this.appKey()
+              }
+          }).use(popsicle.plugins.parse('json'))
+          .then((res) => {
+              console.log(res)
+          })
+          .catch((error:Error) => {
+              console.log(error)
+          })
       });
 
       push.on('notification', (data) => {
