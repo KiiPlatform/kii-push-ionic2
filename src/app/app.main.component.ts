@@ -10,7 +10,8 @@ export class MainPage {
   constructor(private navCtrl: NavController) {
   }
   logout() {
-    this.navCtrl.pop();
+    KiiUser.logOut()
+    this.navCtrl.pop()
   }
   userID() : string {
     return KiiUser.getCurrentUser().getID()
