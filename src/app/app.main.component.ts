@@ -14,8 +14,12 @@ export class MainPage {
                     this.installPush()
                 }
     logout() {
-        KiiUser.logOut()
+        this.kiiService.logout()
         this.navCtrl.pop()
+    }
+
+    userID() : string {
+        return this.kiiService.userID()
     }
 
     installPush() {

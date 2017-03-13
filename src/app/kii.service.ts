@@ -16,6 +16,14 @@ export class KiiService {
         return KiiUser.authenticate(username, password)
     }
 
+    logout() : void {
+        KiiUser.logOut()
+    }
+
+    userID() : string {
+        return KiiUser.getCurrentUser().getID()
+    }
+
     installToken(deviceToken: string, platform: string): Promise<any> {
         if (!KiiUser.getCurrentUser()) {
             return new Promise((resolve, reject) => {
