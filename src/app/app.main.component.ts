@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { KiiService } from './kii.service';
+import { InstallResponse } from './kii.installresponse.model';
 
 @Component({
     templateUrl: 'app.main.html'
@@ -38,9 +39,8 @@ export class MainPage {
             console.log(data.registrationId)
             let platform = device.platform.toUpperCase()
             this.kiiService.installToken(data.registrationId, platform)
-            .then((res) => {
-                console.log(res);
-                let message = 'installationID: ' + res['body']['installationID']
+            .then((res: InstallResponse) => {
+                let message = 'installationID: ' + res.installationID
                 message += '\n'
                 message += 'deviceToken: ' + data.registrationId
 

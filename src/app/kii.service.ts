@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { InstallResponse } from './kii.installresponse.model'
 import * as popsicle from 'popsicle'
 
 @Injectable()
@@ -24,7 +25,7 @@ export class KiiService {
         return KiiUser.getCurrentUser().getID()
     }
 
-    installToken(deviceToken: string, platform: string): Promise<any> {
+    installToken(deviceToken: string, platform: string): Promise<InstallResponse> {
         if (!KiiUser.getCurrentUser()) {
             return new Promise((resolve, reject) => {
                 reject(new Error("No login user."))
@@ -47,7 +48,12 @@ export class KiiService {
                 'X-Kii-AppID' : '' + appID,
                 'X-Kii-AppKey' : '' + appKey
             }
-        }).use(popsicle.plugins.parse('json'))
+        }).use(popsicle.plugins.parse('json')).
+        then(
+            (res) => {
+                return res.body as InstallResponse
+            }
+        )
     }
 }
 
