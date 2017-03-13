@@ -3,6 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { LoginPage } from './app.login.component';
 import { MainPage } from './app.main.component';
+import { KiiService } from './kii.service';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,9 @@ import { MainPage } from './app.main.component';
         LoginPage,
         MainPage,
     ],
-    providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+    providers: [{
+        provide: ErrorHandler, useClass: IonicErrorHandler},
+        KiiService,
+    ]
 })
 export class AppModule {}
