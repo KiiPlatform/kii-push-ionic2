@@ -147,3 +147,13 @@ Some library requires typings instead of @types in npm.
 In this case, you may need to configure `complierOptions` in tsconfig.json
 Please make sure to keep the reference to type information defined in both
 @types in npm and typings.
+
+ex.)
+```json
+  "compilerOptions": {
+    "typeRoots" : ["./typings"],
+    "types" : ["kii-cloud-sdk","cordova-plugin-device","phonegap-plugin-push"],
+  ...
+```
+
+For details please read typescript official [guide](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html).
