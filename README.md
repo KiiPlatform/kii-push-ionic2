@@ -46,6 +46,7 @@ cd kii-push-ionic2
 npm install
 ionic platform add ios android
 ionic plugin add phonegap-plugin-push
+typings install
 ```
 
 ### Change configration
